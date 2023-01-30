@@ -48,9 +48,9 @@ const tempData: WaitingContainerProps = {
   roomId: 1,
   ownerId: '1251251253234ieufaduf',
   title: '대기실 제목',
-  countOfPeople: 1,
+  countOfPeople: 5,
 };
-function App() {
+const App = () => {
   const routes: RouteObject[] = [
     {
       path: '/',
@@ -88,7 +88,7 @@ function App() {
 
   const element = useRoutes(routes);
 
-  return element;
-}
+  return <>main{element} </>;
+};
 
 export default App;
