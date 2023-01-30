@@ -1,6 +1,18 @@
+import { useEffect } from 'react';
 import { IngameContainerProps } from '@/typedef/container/Props';
+import GameBoard, { CharacterOption } from '@/typedef/game/GameBoard';
 
-const Ingame = ({ roomId, title, countOfPeople }: IngameContainerProps) => {
+const Ingame = ({ roomId, title, countOfPeople, characterOptions }: IngameContainerProps) => {
+  const gameBoard: GameBoard = new GameBoard(countOfPeople, characterOptions);
+
+  useEffect(() => {
+    // gameBoard.init();
+  }, []);
+
+  useEffect(() => {
+    console.log(gameBoard);
+  }, [gameBoard.isGameStarted]);
+
   return (
     <div>
       인게임 룸
@@ -36,6 +48,25 @@ const Ingame = ({ roomId, title, countOfPeople }: IngameContainerProps) => {
             주정뱅이 - 불면증환자 - 불면증환자(도플갱어)
           </h3>
         </div>
+      </div>
+      <br />
+      <br />
+      {/* gameBoard.characters object타입의 각 속성 정보 출력 */}
+      <div>
+        {/* {Object.keys(gameBoard.characters).map((character: keyof CharacterOption) => {
+          return (
+            <div>
+              {character} : {gameBoard.characters[character]}
+            </div>
+          );
+        })} */}
+        {Object.keys(gameBoard.characters as any).map((character: any) => {
+          return (
+            <div>
+              {character} : {(gameBoard.characters as any)[character]}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
