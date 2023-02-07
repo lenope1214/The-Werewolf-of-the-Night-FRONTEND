@@ -1,21 +1,19 @@
-export interface CharacterOption {
-  Villager: number;
-  Werewolf: number;
-  Seer: number;
-  Robber: number;
-  Troublemaker: number;
-  Drunk: number;
-  Insomniac: number;
-  Hunter: number;
-  Tanner: number;
-  Mason: number;
-  Minion: number;
-  Doppelganger: number;
-}
+import {CharacterOption} from "@/typedef/game/CharacterOption";
+
 export default class GameBoard {
   // getter, setter
+  private nowPlayingCharacter: keyof CharacterOption = 'Werewolf';
+  getNowPlayingCharacter() {
+    return this.nowPlayingCharacter;
+  }
+  setNowPlayingCharacter(nowPlayingCharacter: keyof CharacterOption) {
+    this.nowPlayingCharacter = nowPlayingCharacter;
+  }
+
+  // getter, setter
   private gameStarted: boolean = false;
-  get isGameStarted() {
+
+  isGameStarted() {
     return this.gameStarted;
   }
   setGameStarted(gameStarted: boolean) {

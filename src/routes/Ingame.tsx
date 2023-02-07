@@ -1,17 +1,24 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { IngameContainerProps } from '@/typedef/container/Props';
 import GameBoard, { CharacterOption } from '@/typedef/game/GameBoard';
 
 const Ingame = ({ roomId, title, countOfPeople, characterOptions }: IngameContainerProps) => {
   const gameBoard: GameBoard = new GameBoard(countOfPeople, characterOptions);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
-    // gameBoard.init();
+    setMessage('곧 게임이 시작됩니다!');
+    setInterval(() => {}, 1000);
   }, []);
+
+  useEffect(() => {}, [message]);
 
   useEffect(() => {
     console.log(gameBoard);
-  }, [gameBoard.isGameStarted]);
+    if (gameBoard.isGameStarted()) {
+      alert('게임 시작');
+    }
+  }, [gameBoard.isGameStarted()]);
 
   return (
     <div>
@@ -53,13 +60,6 @@ const Ingame = ({ roomId, title, countOfPeople, characterOptions }: IngameContai
       <br />
       {/* gameBoard.characters object타입의 각 속성 정보 출력 */}
       <div>
-        {/* {Object.keys(gameBoard.characters).map((character: keyof CharacterOption) => {
-          return (
-            <div>
-              {character} : {gameBoard.characters[character]}
-            </div>
-          );
-        })} */}
         {Object.keys(gameBoard.characters as any).map((character: any) => {
           return (
             <div>
@@ -67,6 +67,11 @@ const Ingame = ({ roomId, title, countOfPeople, characterOptions }: IngameContai
             </div>
           );
         })}
+      </div>
+      <div id="message">{message}</div>
+      <div id="game">
+        <div id="day">밤</div>
+        <div id="now">현재 차례 : {gameBoard.getNowPlayingCharacter()}</div>
       </div>
     </div>
   );
