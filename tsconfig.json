@@ -6,9 +6,11 @@
       "@/*": ["./src/*"],
       "@assets/*": ["./public/assets/*"],
       "@components/*": ["./src/components/*"],
+      "@hooks/*": ["./src/hooks/*"],
       "@data/*": ["./src/data/*"],
       "@models/*": ["./src/models/*"],
       "@store/*": ["./src/store/*"],
+      "@stories/*": ["./src/stories/*"],
       "@styles/*": ["./src/styles/*"],
       "@utils/*": ["./src/utils/*"]
     },
@@ -25,7 +27,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "react-jsx"
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

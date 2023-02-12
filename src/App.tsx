@@ -58,9 +58,9 @@ const App = () => {
     <>
       <RecoilRoot>
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path="/kakaoLogin" element={<KakaoLogin />} />
-          </Route>
+          <Route path="/" element={<Layout />}></Route>
+          <Route path="/kakaoLogin" element={<KakaoLogin />} />
+
           {/* {element} */}
         </Routes>
       </RecoilRoot>
