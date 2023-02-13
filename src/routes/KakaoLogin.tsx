@@ -5,7 +5,6 @@ import { useRecoilState } from 'recoil';
 
 const KakaoLogin = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const header = document;
   const [user, setUser] = useRecoilState<User>(myInfoState);
   const token: string = searchParams.get('token') || '';
 
@@ -14,9 +13,7 @@ const KakaoLogin = () => {
 
   useEffect(() => {
     // 로그인 성공!!!
-
     // 서버로부터 자신의 정보를 조회해온다.
-    
   }, [token]);
 
   return <>{token ? <div>로그인 중...</div> : <div>로그인 성공 화면으로 돌아갑니다...</div>}</>;
